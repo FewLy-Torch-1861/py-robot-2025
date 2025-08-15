@@ -1,0 +1,352 @@
+function แขนลง () {
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 93)
+}
+function เลี้ยวซ้าย_90 () {
+    PTKidsBIT.TurnLINE(
+    Turn_Line.Left,
+    100,
+    2,
+    200,
+    20
+    )
+    PTKidsBIT.ForwardTIME(
+    Forward_Direction.Forward,
+    100,
+    0,
+    100,
+    0.06,
+    0.2
+    )
+}
+function วางกระป๋อง () {
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 93)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S1, 175)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 180)
+    basic.pause(200)
+}
+input.onButtonPressed(Button.A, function () {
+    PTKidsBIT.motorGo(50, 50)
+    basic.pause(500)
+    PTKidsBIT.ForwardLINE(
+    Forward_Direction.Forward,
+    Find_Line.Center,
+    100,
+    100,
+    20,
+    0.06,
+    0.2
+    )
+    for (let index = 0; index < 1; index++) {
+        เซนเซอร์ล้อจอด()
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        20,
+        0.06,
+        0
+        )
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        20,
+        0.06,
+        0
+        )
+        เลี้ยวซ้าย_90()
+        PTKidsBIT.ForwardTIME(
+        Forward_Direction.Forward,
+        2000,
+        50,
+        100,
+        0.06,
+        0.2
+        )
+        แขนลง()
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        40,
+        0.04,
+        0
+        )
+        เซนเซอร์ล้อจอด()
+        คีบยก()
+        เลี้ยวขวา_90()
+        เลี้ยวขวา_90()
+        PTKidsBIT.ForwardTIME(
+        Forward_Direction.Forward,
+        2600,
+        100,
+        100,
+        0.06,
+        0.2
+        )
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        20,
+        0.04,
+        0
+        )
+        เซนเซอร์ล้อจอด()
+        วางกระป๋อง()
+        เลี้ยวซ้าย_90()
+        เลี้ยวซ้าย_90()
+        PTKidsBIT.ForwardTIME(
+        Forward_Direction.Forward,
+        2000,
+        50,
+        100,
+        0.06,
+        0.2
+        )
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        20,
+        0.04,
+        0
+        )
+        เซนเซอร์ล้อจอด()
+        เลี้ยวขวา_90()
+        PTKidsBIT.ForwardTIME(
+        Forward_Direction.Forward,
+        1000,
+        50,
+        100,
+        0.06,
+        0.2
+        )
+        PTKidsBIT.ForwardLINE(
+        Forward_Direction.Forward,
+        Find_Line.Center,
+        50,
+        100,
+        20,
+        0.04,
+        0
+        )
+    }
+    แขนลง()
+    PTKidsBIT.ForwardLINE(
+    Forward_Direction.Forward,
+    Find_Line.Center,
+    50,
+    100,
+    20,
+    0.04,
+    0
+    )
+    เซนเซอร์ล้อจอด()
+    คีบยก()
+    เลี้ยวซ้าย_90()
+    เลี้ยวซ้าย_90()
+    PTKidsBIT.ForwardTIME(
+    Forward_Direction.Forward,
+    2000,
+    100,
+    100,
+    0.06,
+    0.2
+    )
+    PTKidsBIT.ForwardLINE(
+    Forward_Direction.Forward,
+    Find_Line.Center,
+    100,
+    100,
+    20,
+    0.04,
+    0
+    )
+    PTKidsBIT.ForwardLINE(
+    Forward_Direction.Forward,
+    Find_Line.Center,
+    100,
+    100,
+    20,
+    0.04,
+    0
+    )
+    เซนเซอร์ล้อจอด()
+    แขนลง()
+    วางกระป๋อง()
+})
+function คีบยก () {
+    PTKidsBIT.servoWrite2(Servo_Write2.S1, 117)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 180)
+    basic.pause(200)
+}
+function เซนเซอร์หน้าจอด () {
+    PTKidsBIT.LINESensorSET(
+    [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+    ],
+    [0],
+    [5],
+    LED_Pin.Disable
+    )
+    PTKidsBIT.ValueSensorSET(
+    [
+    39,
+    39,
+    37,
+    40,
+    37,
+    37
+    ],
+    [18],
+    [26],
+    [
+    119,
+    144,
+    133,
+    141,
+    109,
+    134
+    ],
+    [67],
+    [70]
+    )
+}
+function เซนเซอร์ล้อจอด () {
+    PTKidsBIT.LINESensorSET(
+    [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+    ],
+    [6],
+    [7],
+    LED_Pin.Disable
+    )
+    PTKidsBIT.ValueSensorSET(
+    [
+    39,
+    39,
+    37,
+    40,
+    37,
+    37
+    ],
+    [18],
+    [26],
+    [
+    119,
+    144,
+    133,
+    141,
+    109,
+    134
+    ],
+    [67],
+    [70]
+    )
+}
+input.onGesture(Gesture.LogoDown, function () {
+    basic.showIcon(IconNames.Heart)
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 80)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S1, 110)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 165)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S1, 110)
+    basic.pause(200)
+    for (let index = 0; index < 10; index++) {
+        PTKidsBIT.servoWrite2(Servo_Write2.S0, 165)
+        basic.pause(150)
+        PTKidsBIT.servoWrite2(Servo_Write2.S0, 80)
+        basic.pause(150)
+    }
+    PTKidsBIT.servoWrite2(Servo_Write2.S0, 165)
+    basic.pause(200)
+    PTKidsBIT.servoWrite2(Servo_Write2.S1, 170)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+})
+function เลี้ยวขวา_90 () {
+    PTKidsBIT.TurnLINE(
+    Turn_Line.Right,
+    100,
+    3,
+    200,
+    20
+    )
+    PTKidsBIT.ForwardTIME(
+    Forward_Direction.Forward,
+    100,
+    0,
+    100,
+    0.06,
+    0.2
+    )
+}
+PTKidsBIT.LINESensorSET(
+[
+0,
+1,
+2,
+3,
+4,
+5
+],
+[6],
+[7],
+LED_Pin.Disable
+)
+PTKidsBIT.servoWrite2(Servo_Write2.S0, 180)
+basic.pause(200)
+PTKidsBIT.servoWrite2(Servo_Write2.S1, 175)
+basic.pause(200)
+PTKidsBIT.ValueSensorSET(
+[
+39,
+39,
+37,
+40,
+37,
+37
+],
+[18],
+[26],
+[
+119,
+144,
+133,
+141,
+109,
+134
+],
+[67],
+[70]
+)
+basic.forever(function () {
+    PTKidsBIT.PrintSensorValue()
+    basic.pause(500)
+})
